@@ -1,0 +1,198 @@
+{\rtf1\ansi\ansicpg936\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\fnil\fcharset0 Monaco;
+\f3\fnil\fcharset0 AppleColorEmoji;\f4\fnil\fcharset134 STHeitiSC-Light;\f5\fmodern\fcharset0 CourierNewPSMT;
+}
+{\colortbl;\red255\green255\blue255;\red255\green0\blue0;\red0\green0\blue0;\red0\green128\blue128;
+\red0\green0\blue128;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue128;}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c0\c0;\csgenericrgb\c0\c0\c0;\csgenericrgb\c0\c50196\c50196;
+\csgenericrgb\c0\c0\c50196;\csgenericrgb\c0\c0\c100000;\csgenericrgb\c0\c50196\c50196;\csgenericrgb\c0\c0\c50196;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16600\viewh8340\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f0\fs28 \cf0 2015-2016
+\f1 \'c6\'da\'d6\'d0A
+\f0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \'d2\'bb\'a1\'a2\
+1. \
+create table smurfs(\
+name varchar2(30) primary key,\
+chn_name varchar2(30) not null,\
+Intro varchar2(200)\
+)\
+comment on column smurfs.name is \'a1\'ae\'d3\'a2\'ce\'c4\'c3\'fb\'d7\'d6\'a1\'af;
+\f0 \
+Comment on column smurfs.chn_name is \'91
+\f1 \'d6\'d0\'ce\'c4\'c3\'fb\'d7\'d6
+\f0 \'92;\
+Comment on column smurfs.intro is \'91
+\f1 \'c8\'cb\'ce\'ef\'bd\'e9\'c9\'dc\'a1\'af;\
+\
+Create table smurf_attrs(\
+Name  varchar(30),\
+attr_type number(1) check (attr_type in( 0,1,2)),\
+attr varchar2(50) not null\
+Constrain fk_name_smurfs_name foreign 
+\f2 key
+\f3  
+\f2 reference smurfs(name)
+\f1 \
+)\
+Comment on column smurf_attrs.name is \'a1\'ae\'d3\'a2\'ce\'c4\'c3\'fb\'d7\'d6\'a1\'af\
+Comment on column smurf_attrs.attr_type is \'a1\'ae\'cc\'d8\'b5\'e3\'c0\'e0\'d0\'cd\'a1\'af\
+Comment on column smurf_attrs.attr is \'a1\'ae\'cc\'d8\'b5\'e3\'a1\'af;\
+\
+2. Create table sumrf_adv as \
+select chn_name,attr \
+from smurfs inner join smurf_attrs using (name)\
+Where attr_type=0;\
+\
+3.create index sumrf_adv_index on sumrf_adv(chn_name);\
+\
+4.create view smurf_view as (\
+select distinct name,chn_name,intro \
+From relations inner join smurfs on relations.name1=smurfs.smurfs);\
+\
+\'b6\'fe\'a1\'a2\
+1.select name,chn_name from smurfs;\
+2.select name2 as name from relations where name1=\'a1\'aePapa Smurf\'a1\'af;\
+3.select attr,count(attr) as cnt from smurf_attrs group by attr;\
+4.select name \
+	from\cf2  \cf0 \strike \strikec0 smurf_attrs w\strike0\striked0 \
+	where not exists  (\
+						select  1 from smurf_attrs n where w.name =n.name and attr_type=1 );\
+4.new\
+	select name \
+	from smurf_attrs w\
+	where not exists  (\
+						select  1 from smurf_attrs n where w.name =n.name and attr_type=1 );\
+\
+5.select name , attr_type,attr\
+From smurf_attrs\
+Where  name in (\
+Select  name from smurf_attrs where attr=\'a1\'ae\'c5\'ae\'d0\'d4\'a1\'ae);\
+6.select * (\
+select * from smurfs order by length(intro) desc)\
+Where rownum<4;\
+7.select * from sufs where name in(\
+select name\
+	from smurt_attrd \
+	where attr_type=0\
+	group by name  \
+	having count(attr_type)=(\
+			select max(count(attr_type)) from smurf_attrs where attr_type=0 group by name));\
+8.select  distinct name1,name2 \
+	from relations a inner join relations b on a.name2=b.name1\
+	where a.name1=b.name2 and a.name1<a.name2\
+	order by a.name desc ;\
+8.new \
+\pard\pardeftab720\partightenfactor0
+\cf3 select   a.name1,a.name2 \
+  from relations a inner join relations b on a.name2=b.name1\
+	where a.name1=b.name2 and a.name1<a.name2;\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 9.select name1 ,name2 from relations\
+Where name1<name2 and name1 in (\
+	select name  from smurf_attr	w where attr in (\
+										select attr from smurf_attrs i where w.attr=I.attr));\
+9.new\
+select distinct s1.name,s2.name \
+from smurf_attrs s1 ,smurf_attrs s2\
+where s1.attr=s2.attr and s1.name<s2.name;\
+10.
+\f4 \cf3 \
+\pard\pardeftab720\partightenfactor0
+\cf3 select rownum,a.name1,b.name2\
+from stu a , stu b \
+Where a.name2=b.name1 and a.name1!=b.name2 and (a.name1,b.name2)not in(select name1,name2 from stu);\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \'c8\'fd
+\f4 \cf3 \'a1\'a2\
+\pard\pardeftab720\partightenfactor0
+\cf3 1\
+\
+\
+2015-2016 B\
+\
+\'d2\'bb\'a1\'a2\
+2.
+\f5\fs20 \cf4 create\cf5  \cf4 table\cf5  smurfs_female1 \cf4 as\cf5  \cf4 select\cf5   \cf4 name\cf5 ,chn_name,intro \cf4 from\cf5  smurfs \cf4 where\cf5  \cf4 name\cf5  \cf4 in\cf5  ( \
+\pard\pardeftab720\partightenfactor0
+\cf4 select\cf5  \cf4 name\cf5  \cf4 from\cf5   smurf_attrs  \cf4 where\cf5  attr=\cf6 '
+\f1 \'c5\'ae\'d0\'d4
+\f5 \cf5 );\
+3.create unique index i_rela on  relations(name1,name2);\
+4.\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs28 \cf3 \'b6\'fe
+\f1\fs20 \cf5 \'a1\'a2
+\f5 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf5 1.select chn_name from smurfs a where name not exists\
+(Select 1 from smurf_attrs b where a.name=b.name and b.attr=\'91
+\f1 \'c5\'ae\'d0\'d4
+\f5 \'91
+\f1 )\'a3\'bb\
+2.select chn_name from smurfs where name in (select name1 from relations where name2=\'a1\'aeSmurfette\'a1\'af);\
+3.select.* from smurfs where name not in ( select name from smurf_attrs);\
+4.select name from smurf_attrs a where not exists (select name from smurf_attrs b where a.name=b.name and attr_type=1);\
+5.select * from smurfs_attrs a where not exists (select 1 from smurf_attre b where a.name=b.name and attr=\'a1\'ae\'c5\'ae\'d0\'d4\'a1\'af);\
+7.select  * from smurfs where name in  (select name from smurf_attrs group by name having count(decode(attr_type,0,\'a1\'afy\'a1\'af,null))-count(decode(attr_type,1,0,null))=( select max(count(decode(attr_type,0,y,null))-count(decode(attr_type,1,y,null))) from smurf_attrs group by name));
+\f5 \
+8.select chn_name from smurfs where length(chn_name)=2 and substr(chn_name,1,1)= substr(chn_name,2,1);\
+10.select a.name1 ,b.name2 \
+from relations a inner join relations on a.name2=b.name2 and a.name1!=b.name1\
+Where a.name<b.name;\
+\
+2016-2017 A\
+
+\f1 \'d2\'bb\'a1\'a2
+\f5 \
+1
+\fs36 .create table shikigami (\
+card_id varchar(10) primary key,\
+card_name varchar(50) not null,\
+rarity_id char(1) ,\
+Constraint rarity_id_fk foreign key (rarity_id) references rarity(rarity.id));\
+\
+Comment on column shikigami.card_id is \'91
+\f1 \'ca\'bd\'c9\'f1id\'a1\'af;\
+Comment on column shikigami.card_name is\'a1\'af\'ca\'bd\'c9\'f1\'c3\'fb\'d7\'d6\'a1\'af;\
+Comment on column shikigami.rarity_id is\'a1\'af\'cf\'a1\'d3\'d0\'b6\'c8id\'a1\'af;\
+\
+\'b6\'fe\'a1\'a2\
+1.select count\'a3\'a8*\'a3\'a9from shikigami;\
+2.select * from from shikigami where card_name like \'a1\'ae&\'cd\'af&\'a1\'ae;\
+3.select card_id,card_name,rarity_id,rerity_desc from shikigami left join rarity using(rarity_id) where rarity_desc =\'a1\'aeSSR\'a1\'af;\
+4.select player_id,player_name from players a\
+Where not exists (select player_id from usershi b where  b.player_id=a.player_id );\
+5.select player_id,count(distinct card_id) cardcnt \
+from users \
+group by player_id \
+order by cardcnt desc;\
+6.select player_id,min(draw_time) from usershi group by player_id ;\
+7.select  to_char(draw_time,'yyyy/mm/dd') Adate ,count(*) cnt \
+from usershi\
+ group by to_char(draw_time,'yyyy/mm/dd')\
+ having count(*)>1 \
+ order by count(*) ;\
+8.select * from from usershi where darw_time>to_date(\'a1\'afyyyy/mm/dd/hh\'a1\'af,\'a1\'af2016/10/10/12);\
+9.
+\f5\fs20 \cf7 with\cf8  temp \cf7 as\cf8  (\cf7 select\cf8  * \
+\pard\pardeftab720\partightenfactor0
+\cf7 from\cf8  usershi \cf7 left\cf8  \cf7 join\cf8  shikigami \cf7 using\cf8 (card_id)\
+             \cf7 left\cf8  \cf7 join\cf8  rarity \cf7 using\cf8 (rarity_id)\
+\cf7 where\cf8  rarity_desc \cf7 in\cf8  (\cf6 'R'\cf8 ,\cf6 'SR'\cf8 ,\cf6 'SSR'\cf8 ) )\
+\cf7 select\cf8  * \cf7 from\cf8 (\
+\cf7 select\cf8  player_id,\cf7 avg\cf8 (lv)\
+\cf7 from\cf8  temp\
+\cf7 group\cf8  \cf7 by\cf8  player_id\
+\cf7 order\cf8  \cf7 by\cf8  \cf7 avg\cf8 (lv) \cf7 desc\cf8 )\
+\cf7 where\cf8  \cf7 rownum\cf8 =\cf6 1\cf8 ;\'df
+\fs28 \cf5 \
+}
